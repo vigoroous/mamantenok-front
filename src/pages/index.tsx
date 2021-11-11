@@ -130,7 +130,7 @@ export default Home
 
 Home.getLayout = function getLayout(page) {
   return (
-    <Layout>
+    <Layout selected='home'>
       {page}
     </Layout>
   )

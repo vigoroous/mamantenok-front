@@ -1,0 +1,198 @@
+.header {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 92px;
+    padding: 0px 40px 0px 40px;
+    box-shadow: rgb(0 0 0 / 13%) 0 4px 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    z-index: 9999;
+    background: #fff;
+}
+
+.header__wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header__logo {
+    padding: 0px 40px 0px 0px;
+}
+
+.header__logo-link {
+    display: block;
+    background-image: url('/img/logo.png');
+    background-size: contain;
+    height: 64px;
+    width: 220px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.header__submenu {
+    display: flex;
+    justify-content: center;
+}
+
+.header__nav-link, .header__submenu-button {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222222;
+    transition: color 0.3s ease-in-out;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.header__submenu-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header__submenu-button-arrow {
+    margin-left: 6px;
+    width: 6px;
+    border-color: inherit;
+}
+
+.header__submenu-button-arrow:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 3px 0 3px;
+    margin-top: 5px;
+    display: block;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-color: transparent transparent transparent transparent;
+    border-top-color: inherit;
+}
+
+.header__nav-link:hover, .header__submenu-button:hover, .header__nav-link_active, .header__submenu-button_active {
+    color: #2971f5;
+}
+
+.header__nav-link:first-child {
+    margin-left: 0;
+}
+
+.header__nav-link:last-child {
+    margin-right: 0;
+}
+
+.header__submenu-items {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 32px;
+    background-color: #ffffff;
+    /* width: 14rem; */
+    border-radius: 6px;
+    padding: .25rem;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px
+}
+
+.header__submenu-items_opened {
+    animation-duration: 0.22s;
+    animation-timing-function: ease;
+    animation-name: submenu_appear;
+}
+
+.header__submenu-items_closed {
+    animation-duration: 0.22s;
+    animation-timing-function: ease;
+    animation-name: submenu_disappear;
+}
+
+@keyframes submenu_appear {
+    from {
+        transform: scale(95%);
+        opacity: 0;
+    }
+    to {
+        transform: scale(100%);
+        opacity: 1;
+    }
+}
+
+@keyframes submenu_disappear {
+    from {
+        transform: scale(100%);
+        opacity: 1;
+    }
+    to {
+        transform: scale(95%);
+        opacity: 0;
+    }
+}
+
+.header__submenu-items>.header__nav-link {
+    text-align: center;
+    padding: 8px;
+    margin: 0;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.header__submenu-items>.header__nav-link:hover {
+    background-color: #ebebeb;
+    color: #2971f5;
+}
+
+.header__socials {
+    display: flex;
+    margin-left: 40px;
+}
+
+.header__socials-link {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    margin: 0 5px;
+}
+
+.header__login-button {
+    height: 40px;
+    margin-left: 40px;
+    background-color: #ebebeb;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.header__login-button-link {
+    display: inline-block;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #2971f5;
+    height: 100%;
+    line-height: 42px;
+    transition: color 0.3s ease-in-out;
+}
+
+.header__login-button:hover {
+    background-color: #2971f5;
+}
+
+.header__login-button:hover .header__login-button-link {
+    color: #f2f7fe;
+}
