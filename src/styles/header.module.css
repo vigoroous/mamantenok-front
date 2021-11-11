@@ -166,6 +166,11 @@
     margin: 0 5px;
 }
 
+.header__socials-link svg {
+    width: 30px;
+    height: 30px;
+}
+
 .header__login-button {
     height: 40px;
     margin-left: 40px;
@@ -195,4 +200,57 @@
 
 .header__login-button:hover .header__login-button-link {
     color: #f2f7fe;
+}
+
+@media (max-width: 1200px) {
+    .header {
+        padding: 0px 20px 0px 20px;
+        box-shadow: rgb(0 0 0 / 13%) 0 4px 16px;
+    }
+    .header__logo {
+        padding: 0px 20px 0px 0px;
+    }
+    .header__logo-link {
+        display: block;
+        height: 58px;
+        width: 200px;
+    }
+    .header__nav-link, .header__submenu-button {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .header__socials {
+        margin-left: 20px;
+    }
+    .header__login-button {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 1060px) {
+    .header__nav-link, .header__submenu-button {
+        font-size: 14px;
+    }
+    .header__socials-link {
+        width: 26px;
+        height: 26px;
+    }
+    .header__socials-link svg {
+        width: 26px;
+        height: 26px;
+    }
+    .header__login-button {
+        height: 36px;
+    }
+    .header__login-button-link {
+        line-height: 38px;
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+}
+
+@media (max-width: 980px) {
+    .header {
+        display: none;
+    }
 }
