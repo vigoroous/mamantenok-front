@@ -1,5 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import useDelayedToggle from 'hooks/useDelayedToggle'
 import { VK, Instagram } from '@icons/socials'
 import styles from '@styles/header.module.css'
 import styles_mobile from '@styles/header_mobile.module.css'
@@ -82,17 +83,7 @@ type SubmenuItemsProps = {
 
 const SubmenuItems: FC<SubmenuItemsProps> = ({ mobile, open, delay = 200, children }) => {
     const timer = useRef<number | undefined>(undefined)
-    const [actuallyOpen, setActuallyOpen] = useState(false)
-
-    useEffect(() => {
-        if (timer.current) window.clearTimeout(timer.current)
-        if (open) {
-            setActuallyOpen(true)
-        } else {
-            timer.current = window.setTimeout(() => setActuallyOpen(false), delay)
-            return () => window.clearTimeout(timer.current)
-        }
-    }, [open, delay])
+    const [actuallyOpen] = useDelayedToggle(open, delay)
 
     if (!actuallyOpen) return null
     return (
@@ -159,19 +150,7 @@ type MobileDrawerProps = {
 
 const MobileDrawer: FC<MobileDrawerProps> = ({ selected, open, delay = 300 }) => {
     const [submenu, setSubmenu] = useState(false)
-
-    const timer = useRef<number | undefined>(undefined)
-    const [actuallyOpen, setActuallyOpen] = useState(false)
-
-    useEffect(() => {
-        if (timer.current) window.clearTimeout(timer.current)
-        if (open) {
-            setActuallyOpen(true)
-        } else {
-            timer.current = window.setTimeout(() => setActuallyOpen(false), delay)
-            return () => window.clearTimeout(timer.current)
-        }
-    }, [open, delay])
+    const [actuallyOpen] = useDelayedToggle(open, delay)
 
     if (!actuallyOpen) return null
     return (
