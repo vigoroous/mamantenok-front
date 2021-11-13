@@ -23,12 +23,12 @@ const Home: NextPageWithLayout = () => {
                 <div className={`${styles['content__cover-image']}`}></div>
             </div>
         </div>
-        <div className={`${styles['rec_pt_105 rec_pb_30 rec_gray']}`}>
+        <div className="rec_pt_105 rec_pb_30 rec_gray">
             <div className={`${styles['content__title-wrap']}`}>
                 <div className={`${styles['content__title']}`}>О нашем клубе</div>
             </div>
         </div>
-        <div className={`${styles['rec_pt_60 rec_pb_60 rec_gray']}`}>
+        <div className="rec_pt_60 rec_pb_60 rec_gray">
             <div className={`${styles['content__video-wrap']}`}>
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/sJyMiqPYVjE"
                     title="YouTube video player" frameBorder="0"
@@ -36,7 +36,7 @@ const Home: NextPageWithLayout = () => {
                     allowFullScreen></iframe>
             </div>
         </div>
-        <div className={`${styles['rec_pt_45 rec_pb_90 rec_gray']}`}>
+        <div className="rec_pt_45 rec_pb_90 rec_gray">
             <div className={`${styles['content__text-wrap']}`}>
                 <div className={`${styles['content__text']}`}>
                     Основной целью работы семейного клуба «Мамантёнок» является комплексная поддержка семей, приходящих
@@ -45,19 +45,19 @@ const Home: NextPageWithLayout = () => {
                 </div>
             </div>
         </div>
-        <div className={`${styles['rec_pt_105 rec_pb_30']}`}>
+        <div className="rec_pt_105 rec_pb_30">
             <div className={`${styles['content__title-wrap']}`}>
                 <div className={`${styles['content__title']}`}>Как мы работаем</div>
             </div>
         </div>
-        <div className={`${styles['rec_pt_45 rec_pb_90']}`}>
+        <div className="rec_pt_45 rec_pb_90">
             <div className={`${styles['content__text-wrap']}`}>
                 <div className={`${styles['content__text']}`}>
                     Нам важно видеть членов нашего клуба счастливыми, физически благополучными и психически здоровыми
                     людьми. Мы делаем все возможное для осуществления этой цели.
                     <br /><br />
                     В нашем клубе есть индивидуальные и групповые занятия для детей дошкольного возраста, курсы
-                    психологического направления на развитие личности детей и взрослых, а также
+                    психологического направления на развитие личности детей и взрослых, а также&nbsp;
                     <a className={`${styles['content__text-link']}`} href="/courses">дистанционные курсы</a> для
                     детей дошкольного возраста. Для взрослых и детей предусмотрены индивидуальные сессии с психологом.
                     <br /><br />
@@ -70,7 +70,7 @@ const Home: NextPageWithLayout = () => {
                 </div>
             </div>
         </div>
-        <div className={`${styles['rec_pt_105 rec_pb_45 rec_gray']}`}>
+        <div className="rec_pt_105 rec_pb_45 rec_gray">
             <div className={`${styles['content__title-wrap']}`}>
                 <div className={`${styles['content__title']}`}>Наш клуб</div>
             </div>
@@ -80,19 +80,18 @@ const Home: NextPageWithLayout = () => {
                 </div>
             </div>
         </div>
-        <div id="contact" className={`${styles['rec_pt_105 rec_pb_45']}`}>
+        <div id="contact" className="rec_pt_105 rec_pb_45">
             <div className={`${styles['content__title-wrap']}`}>
                 <div className={`${styles['content__title']}`}>Связаться с нами</div>
             </div>
             <div className={`${styles['content__descr-wrap']}`}>
                 <div className={`${styles['content__descr']}`}>
                     Наш менеджер с радостью проконсультирует Вас по любому интересующему вопросу.
-                    <br />
                     Оставьте заявку и мы свяжемся с Вами в ближайшее время!
                 </div>
             </div>
         </div>
-        <div className={`${styles['rec_pb_150']}`}>
+        <div className="rec_pb_150">
             <div className={`${styles['content__form-wrap']}`}>
                 <form className={`${styles['content__form']}`}>
                     <div className={`${styles['content__success-msg']}`}></div>
@@ -115,7 +114,7 @@ const Home: NextPageWithLayout = () => {
                     </div>
                 </form>
                 <div className={`${styles['content__form-bottom-text']}`}>
-                    Нажимая на кнопку, вы соглашаетесь с
+                    Нажимая на кнопку, вы соглашаетесь с&nbsp;
                     <a className={`${styles['content__policy-link']}`} href="/policy">
                         условиями обработки персональных данных
                     </a>
