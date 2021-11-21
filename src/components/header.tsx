@@ -7,7 +7,6 @@ import styles_mobile from '@styles/header_mobile.module.css'
 
 
 const DesktopHeader: FC<HeaderProps> = ({ selected }) => {
-    const [submenu, setSubmenu] = useState(false)
 
     return (
         <header className={`${styles['header']}`}>
@@ -20,13 +19,7 @@ const DesktopHeader: FC<HeaderProps> = ({ selected }) => {
                     <NavButton selected={selected} link='/team'>Наша&nbsp;команда</NavButton>
                     <NavButton selected={selected} link='/achievements'>Достижения</NavButton>
 
-                    <Submenu>
-                        <SubmenuButton selected={selected} onClick={() => setSubmenu(!submenu)}>Курсы</SubmenuButton>
-                        <SubmenuItems open={submenu}>
-                            <NavButton selected={selected} link='/courses/video'>Видеокурсы</NavButton>
-                            <NavButton selected={selected} link='/courses/classes'>Очные&nbsp;занятия</NavButton>
-                        </SubmenuItems>
-                    </Submenu>
+                    <SubmenuComponent selected={selected} />
 
                     <NavButton selected={selected} link='/blog'>Блог</NavButton>
                     <NavButton selected={selected} link='/contacts'>Контакты</NavButton>
@@ -36,10 +29,23 @@ const DesktopHeader: FC<HeaderProps> = ({ selected }) => {
                     <Link href="https://www.instagram.com/sk_mamantenok/" passHref><a className={`${styles['header__socials-link']}`}><Instagram /></a></Link>
                 </div>
                 <div className={`${styles['header__login-button']}`}>
-                    <a className={`${styles['header__login-button-link']}`} href="#">Войти</a>
+                    <Link href="/login" passHref><a className={`${styles['header__login-button-link']}`}>Войти</a></Link>
                 </div>
             </div>
         </header>
+    )
+}
+
+const SubmenuComponent: FC<SubmenuProps & HeaderProps> = ({ mobile, selected }) => {
+    const [submenu, setSubmenu] = useState(false)
+    return (
+        <Submenu mobile={!!mobile}>
+            <SubmenuButton mobile={!!mobile} selected={selected} onClick={() => setSubmenu(!submenu)}>Курсы</SubmenuButton>
+            <SubmenuItems mobile={!!mobile} open={submenu}>
+                <NavButton mobile={!!mobile} selected={selected} link='/courses/video'>Видеокурсы</NavButton>
+                <NavButton mobile={!!mobile} selected={selected} link='/courses/classes'>Очные&nbsp;занятия</NavButton>
+            </SubmenuItems>
+        </Submenu>
     )
 }
 
@@ -102,7 +108,7 @@ type NavButtonProps = {
 } & HeaderProps
 
 const NavButton: FC<NavButtonProps> = ({ selected, mobile, link, children }) => {
-    const included = link.includes(selected)
+    const included = selected && link.includes(selected)
 
     return (
         <Link href={link} passHref>
@@ -138,7 +144,7 @@ const MobileHeader: FC<HeaderProps> = ({ selected }) => {
                     <Link href="/" passHref><a className={`${styles_mobile['header__logo-link']}`}></a></Link>
                 </div>
             </div>
-            <MobileDrawer selected={selected} open={drawer} />
+            <MobileDrawer selected={selected} open={drawer} onClose={() => setDrawer(false)} />
         </header>
     )
 }
@@ -146,38 +152,34 @@ const MobileHeader: FC<HeaderProps> = ({ selected }) => {
 type MobileDrawerProps = {
     open: boolean,
     delay?: number,
+    onClose: () => void,
 } & HeaderProps
 
-const MobileDrawer: FC<MobileDrawerProps> = ({ selected, open, delay = 300 }) => {
-    const [submenu, setSubmenu] = useState(false)
+const MobileDrawer: FC<MobileDrawerProps> = ({ selected, open, delay = 300, onClose }) => {
     const [actuallyOpen] = useDelayedToggle(open, delay)
 
     if (!actuallyOpen) return null
     return (
-        <div className={`${styles_mobile['header__drawer-wrap']} ${open ? styles_mobile['header__drawer-wrap_opened'] : styles_mobile['header__drawer-wrap_closed']}`}>
-            <div className={`${styles_mobile['header__drawer']} ${open ? styles_mobile['header__drawer_opened'] : styles_mobile['header__drawer_closed']}`}>
+        <div className={`${styles_mobile['header__drawer-wrap']} ${open ? styles_mobile['header__drawer-wrap_opened'] : styles_mobile['header__drawer-wrap_closed']}`}
+            onClick={() => onClose()}>
+            <div className={`${styles_mobile['header__drawer']} ${open ? styles_mobile['header__drawer_opened'] : styles_mobile['header__drawer_closed']}`}
+                onClick={e => e.stopPropagation()}>
                 <nav className={`${styles_mobile['header__nav']}`}>
-                    <NavButton mobile={true} selected={selected} link='/gallery'>Галерея</NavButton>
-                    <NavButton mobile={true} selected={selected} link='/team'>Наша&nbsp;команда</NavButton>
-                    <NavButton mobile={true} selected={selected} link='/achievements'>Достижения</NavButton>
+                    <NavButton mobile selected={selected} link='/gallery'>Галерея</NavButton>
+                    <NavButton mobile selected={selected} link='/team'>Наша&nbsp;команда</NavButton>
+                    <NavButton mobile selected={selected} link='/achievements'>Достижения</NavButton>
 
-                    <Submenu mobile={true}>
-                        <SubmenuButton mobile={true} selected={selected} onClick={() => setSubmenu(!submenu)}>Курсы</SubmenuButton>
-                        <SubmenuItems mobile={true} open={submenu}>
-                            <NavButton mobile={true} selected={selected} link='/courses/video'>Видеокурсы</NavButton>
-                            <NavButton mobile={true} selected={selected} link='/courses/classes'>Очные&nbsp;занятия</NavButton>
-                        </SubmenuItems>
-                    </Submenu>
+                    <SubmenuComponent mobile />
 
-                    <NavButton mobile={true} selected={selected} link='/blog'>Блог</NavButton>
-                    <NavButton mobile={true} selected={selected} link='/contacts'>Контакты</NavButton>
+                    <NavButton mobile selected={selected} link='/blog'>Блог</NavButton>
+                    <NavButton mobile selected={selected} link='/contacts'>Контакты</NavButton>
                 </nav>
                 <div className={`${styles_mobile['header__socials']}`}>
                     <Link href="https://vk.com/public197709930" passHref><a className={`${styles_mobile['header__socials-link']}`}><VK /></a></Link>
                     <Link href="https://www.instagram.com/sk_mamantenok/" passHref><a className={`${styles_mobile['header__socials-link']}`}><Instagram /></a></Link>
                 </div>
                 <div className={`${styles_mobile['header__login-button']}`}>
-                    <a className={`${styles_mobile['header__login-button-link']}`} href="#">Войти</a>
+                    <Link href="/login" passHref><a className={`${styles_mobile['header__login-button-link']}`}>Войти</a></Link>
                 </div>
             </div>
         </div>
@@ -185,7 +187,7 @@ const MobileDrawer: FC<MobileDrawerProps> = ({ selected, open, delay = 300 }) =>
 }
 
 export type HeaderProps = {
-    selected: 'home' | 'gallery' | 'team' | 'achievements' | 'courses' | 'classes' | 'blog' | 'contacts'
+    selected?: 'home' | 'gallery' | 'team' | 'achievements' | 'courses' | 'classes' | 'blog' | 'contacts' | 'login'
 }
 
 const Header: FC<HeaderProps> = ({ selected }) => {

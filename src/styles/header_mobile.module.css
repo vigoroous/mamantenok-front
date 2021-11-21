@@ -318,8 +318,8 @@
 /*** Login-button ***/
 
 .header__login-button {
-    height: 50px;
-    margin: 10px auto;
+    height: 40px;
+    margin: 10px auto 20px;
     background-color: #ebebeb;
     border-radius: 25px;
     cursor: pointer;
@@ -330,13 +330,13 @@
 .header__login-button-link {
     display: inline-block;
     font-family: 'Roboto', Arial, sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     color: #2971f5;
     height: 100%;
-    line-height: 50px;
+    line-height: 40px;
     transition: color 0.3s ease-in-out;
 }
 
